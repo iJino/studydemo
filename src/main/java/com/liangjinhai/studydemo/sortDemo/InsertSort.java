@@ -7,7 +7,7 @@ package com.liangjinhai.studydemo.sortDemo;
  */
 public class InsertSort {
 
-    public static void InsertSort(int[] source) {
+    public static void insertSort(int[] source) {
         int i, j;
         int insertNode;// 要插入的数据
         // 从数组的第二个元素开始循环将数组中的元素插入
@@ -39,7 +39,7 @@ public class InsertSort {
         System.out.print("初始关键字：");
         printArray(source);
         System.out.println("");
-        InsertSort(source);
+        insertSort(source);
 
         System.out.print("\n\n排序后结果：");
         printArray(source);

@@ -7,7 +7,7 @@ package com.liangjinhai.studydemo.sortDemo;
  */
 public class BubbleSort {
 
-    public static void sort(int[] arr){
+    public static void bubbleSort(int[] arr){
         System.out.println("排序前数组为：");
         for (int num : arr){
             System.out.print(num+" ");
@@ -40,7 +40,7 @@ public class BubbleSort {
         System.out.print("初始关键字：");
         printArray(source);
         System.out.println("");
-        sort(source);
+        bubbleSort(source);
 
         System.out.print("\n\n排序后结果：");
         printArray(source);
