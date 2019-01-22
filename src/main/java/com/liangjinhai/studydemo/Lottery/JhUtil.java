@@ -7,6 +7,9 @@ package com.liangjinhai.studydemo.Lottery;
  */
 public class JhUtil {
 
+    /**
+     * 彩票接口
+     */
     public class lottery {
 
         public static final String KEY = "0146450fc69712b60f71e44770c03c87";
@@ -14,13 +17,15 @@ public class JhUtil {
         public static final String TYPES = "http://apis.juhe.cn/lottery/types";
         /*开奖情况*/
         public static final String QUERY = "http://apis.juhe.cn/lottery/query";
-
+        /*开奖历史*/
         public static final String HISTORY = "http://apis.juhe.cn/lottery/history";
-
+        /*奖金计算*/
         public static final String BONUS = "http://apis.juhe.cn/lottery/bonus";
 
     }
-
+    /**
+     * 星座运程
+     */
     public class constellation {
 
         public static final String KEY = "0dcff0da52ae9e494ec0f492716ea973";

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{ text-align:center}
+    </style>
+</head>
+<body style="text-align:center">
+<div>
+    <table  border="1" cellspacing="0" cellpadding="3">
+        <tr>
+            <td></td>
+            <td>期</td>
+            <td>结果</td>
+            <td>最接近预测</td>
+            <td>命中率</td>
+        </tr>
+        <#list compares as item>
+        <tr>
+            <td>${item_index}</td>
+            <td>${item.time}</td>
+            <td>${item.result}</td>
+            <td>${item.numbers}</td>
+            <td>${item.probability}</td>
+        </tr>
+        </#list>
+    </table>
+</div>
+</body>
+</html>

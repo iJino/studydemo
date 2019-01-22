@@ -1,6 +1,8 @@
 package com.liangjinhai.studydemo.controller;
 
 import com.liangjinhai.studydemo.Lottery.JhService;
+import com.liangjinhai.studydemo.Lottery.domin.LotteryCompare;
+import com.liangjinhai.studydemo.Lottery.service.LotteryCompareService;
 import com.liangjinhai.studydemo.common.StaticProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,8 @@ public class JhController {
     private JhService jhService;
     @Resource
     private JedisCluster jedisCluster;
+    @Resource
+    private LotteryCompareService lotteryCompareService;
 
     @RequestMapping("/{type}/query")
     public String lotteryIndex(@PathVariable("type") String type, Model model){
@@ -33,5 +37,12 @@ public class JhController {
         model.addAttribute("forecast",forecast);
         model.addAttribute("result",result);
         return "/lottery/index";
+    }
+
+    @RequestMapping("/lottery/compate")
+    public String lotteryCompare(Model model){
+        List<LotteryCompare> compares = lotteryCompareService.findAll();
+        model.addAttribute("compares",compares);
+        return "/lottery/compare";
     }
 }
