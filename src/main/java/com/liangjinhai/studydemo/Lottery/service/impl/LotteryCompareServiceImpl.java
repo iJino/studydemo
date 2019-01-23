@@ -22,4 +22,20 @@ public class LotteryCompareServiceImpl implements LotteryCompareService {
     public List<LotteryCompare> findAll() {
         return lotteryCompareRepository.findAll();
     }
+
+    @Override
+    public LotteryCompare findByTime(String time) {
+        return lotteryCompareRepository.findByTime(time);
+    }
+
+    @Override
+    public Boolean exist(String time) {
+        LotteryCompare db = this.findByTime(time);
+        if(db != null){
+            return false;
+        }
+        return true;
+    }
+
+
 }

@@ -25,7 +25,7 @@ public class DoubleColorBallSort {
                     }
                 }
             }
-            Integer red = (int)(33*Math.random()+1);
+            Integer red = (int)(16*Math.random()+1);
             numbers.add(red);
             result.add(JsonUtil.object2Json(numbers));
         }
