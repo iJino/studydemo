@@ -6,6 +6,7 @@ import com.liangjinhai.studydemo.common.StaticProperties;
 import com.liangjinhai.studydemo.common.util.JsonUtil;
 import com.liangjinhai.studydemo.common.util.OKHttpUtil;
 import com.liangjinhai.studydemo.sortDemo.DoubleColorBallSort;
+import org.apache.commons.lang3.time.FastDateFormat;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +14,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import redis.clients.jedis.JedisCluster;
 
 import javax.annotation.Resource;
+import javax.sound.midi.Soundbank;
+import java.text.ParseException;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -24,6 +29,7 @@ public class StudydemoApplicationTests {
     private JhService jhService;
     @Resource
     private JedisCluster jedisCluster;
+    private static FastDateFormat yMd = FastDateFormat.getInstance("yyyy-MM-dd");
 
     @Test
     public void contextLoads() {
@@ -94,6 +100,42 @@ public class StudydemoApplicationTests {
                 }
             }
         }
+    }
+
+    @Test
+    public void test6() throws ParseException {
+        Date d = yMd.parse("2019-03-01");
+        String start = "";
+        String end = "";
+        Calendar today = Calendar.getInstance();
+        today.setTime(d);
+        today.add(Calendar.MONTH, -1);
+        Date startDate = today.getTime();
+        start = yMd.format(startDate);
+        today.setTime(d);
+        today.add(Calendar.DATE,-1);
+        Date endDate = today.getTime();
+        end = yMd.format(endDate);
+        System.out.println(start+"***1***"+end);
+        List<String> t = Arrays.asList(start.split("-"));
+        start = t.get(0)+"-"+t.get(1)+"-15";
+        System.out.println(start+"***2***"+end);
+        today.setTime(d);
+        today.add(Calendar.DATE,-1);
+        Date endDate1 = today.getTime();
+        end = yMd.format(endDate1);
+        List<String> t1 = Arrays.asList(start.split("-"));
+        start = t.get(0)+"-"+t.get(1)+"-01";
+        System.out.println(start+"***3***"+end);
+        today.setTime(d);
+        today.add(Calendar.DATE,-1);
+        Date endDate2 = today.getTime();
+        end = yMd.format(endDate2);
+        today.setTime(d);
+        today.add(Calendar.DATE,-7);
+        Date startDate2 = today.getTime();
+        start = yMd.format(startDate2);
+        System.out.println(start+"***4***"+end);
     }
 }
 

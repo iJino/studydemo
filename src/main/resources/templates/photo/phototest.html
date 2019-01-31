@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EZView Demo</title>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script src="EZView.js"></script>
+    <script src="draggable.js"></script>
+    <style>
+        .m{
+            width: 800px;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="m">
+    <section>
+        <h1>EZView Demo</h1>
+        <h2>描述</h2>
+        <p>jQuery插件显示图像和PDF文件预览</p>
+        <p>点击任何图像的预览将显示相关的图像或PDF文件 </p>
+    </section>
+    <div>
+        <img src="img/js.png" alt="js Image" index="0" style="cursor: pointer;" width="80px">
+        <img src="img/broken-file-icon-hi.png" alt="js Image" href="saf" index="1" style="cursor: pointer;" width="80px">
+        <img src="img/js2.png" alt="js Image" index="2" style="cursor: pointer;" width="80px">
+        <img src="img/pdf.png" alt="js Image" href="yanshi.pdf" index="3" style="cursor: pointer;" width="80px">
+    </div>
+</div>
+
+
+<script>
+    // Init pluging in all the images
+    $('img').EZView();
+
+
+</script>
+<style type="text/css">
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+</body></html>

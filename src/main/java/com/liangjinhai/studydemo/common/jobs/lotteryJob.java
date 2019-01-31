@@ -30,9 +30,9 @@ public class lotteryJob {
     @Resource
     private LotteryCompareService lotteryCompareService;
 
-    public final static long ONE_Minute = 1000;
-
-    @Scheduled(fixedRate=ONE_Minute)
+//    public final static long ONE_Minute = 1000;
+//
+//    @Scheduled(fixedRate=ONE_Minute)
     public void lotteryCompare(){
         Long end = jedisCluster.llen(StaticProperties.DOUBLE_COLOR_BALL);
         List<String> forecast = jedisCluster.lrange(StaticProperties.DOUBLE_COLOR_BALL,0,end-1);
