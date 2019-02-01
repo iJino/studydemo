@@ -15,10 +15,10 @@ import java.io.IOException;
 @Controller
 public class CheckCenterController {
 
-    @GetMapping("/socket/{cid}")
-    public String socket(@PathVariable("cid")String cid, Model model){
-        model.addAttribute("cid",cid);
-        return "/test1";
+    @GetMapping("/socket/{userId}")
+    public String socket(@PathVariable("userId")String userId, Model model){
+        model.addAttribute("userId",userId);
+        return "/websocket/socketTest";
     }
 
     @ResponseBody

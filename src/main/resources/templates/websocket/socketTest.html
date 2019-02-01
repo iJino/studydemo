@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="/static/jQuery/jquery-2.2.3.min.js"></script>
+<script>
+    var socket;
+
+    function openSocket() {
+        if (typeof (WebSocket) == "undefined") {
+            console.log("你的浏览器不支持WebSocket");
+        } else {
+            console.log("你的浏览器支持WebSocket");
+            //实现化WebSocket对象，指定要连接的服务器地址与端口，建立连接
+            //等同于
+            var socketUrl = "http://localhost:8787/im/" + '${userId}';
+            socketUrl = socketUrl.replace("https", "ws").replace("http", "ws");
+            console.log(socketUrl)
+            socket = new WebSocket(socketUrl);
+            //打开事件
+            socket.onopen = function (ev) {
+                console.log("Socket 已打开" + ev);
+                //socket.send("这是来自客户端的消息" + location.href + new Date());
+            }
+            //获得消息事件
+            socket.onmessage = function (ev) {
+                console.log(ev.data);
+            }
+            //关闭事件
+            socket.onclose = function () {
+                console.log("Socket已关闭")
+            }
+            //发生错误时间
+            socket.onerror = function (ev) {
+                alert("Socket发生了错误");
+                //此时可以尝试刷新页面
+            }
+        }
+    }
+
+    function sendMessage() {
+        if (typeof(WebSocket) == "undefined") {
+            console.log("您的浏览器不支持WebSocket");
+        } else {
+            console.log("您的浏览器支持WebSocket");
+            console.log('[{"toUserId":"' + $("#toUserId").val() + '","contentText":"' + $("#contentText").val() + '"}]');
+            socket.send('[{"toUserId":"' + $("#toUserId").val() + '","contentText":"' + $("#contentText").val() + '"}]');
+        }
+    }
+
+</script>
+<body>
+<p>【userId】：
+<div><input id="userId" name="userId" type="text" value=${userId}></div>
+<p>【toUserId】：
+<div><input id="toUserId" name="toUserId" type="text" value="26"></div>
+<p>【toUserId】：
+<div><input id="contentText" name="contentText" type="text" value="嗷嗷嗷"></div>
+<p>【操作】：
+<div>
+    <button onclick="openSocket()">开启socket</button>
+</div>
+<p>【操作】：
+<div>
+    <button onclick="sendMessage()">发送消息</button>
+</div>
+</body>
+
+
+</html>
